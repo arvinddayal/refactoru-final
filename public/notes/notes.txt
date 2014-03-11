@@ -1,0 +1,19 @@
+Questionnaire
+
+	Purpose
+	-Home
+	-Travel
+
+	Group Size
+
+	Pets #
+
+	Special
+	-Earthquake Zone
+	-Flood Zone
+	-Tornado Zone
+
+DB
+-Name
+-Purpose
+-Cateogry

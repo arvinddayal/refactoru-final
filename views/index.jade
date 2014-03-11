@@ -1,4 +1,50 @@
 extends layout
 
 block content
-	h1= title
+	nav Welcome to the Emergency Kit Builder Site
+	.container
+		p This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
+		form.questionnaire#questionnaire(action="/submit" method="post")
+			select#purpose(name="purpose")
+				option(value="purpose") Purpose of Kit
+				option(value="home") Home
+				option(value="travel") Travel
+			select#groupSize(name="groupSize")
+				option(value="groupSize") Group Size
+				option(value="1") 1
+				option(value="2") 2
+				option(value="3") 3
+				option(value="4") 4
+				option(value="5") 5
+				option(value="6") 6
+			select#pets(name="pets") Pets
+				option(value="0") # of Pets
+				option(value="0") 0
+				option(value="1") 1
+				option(value="2") 2
+				option(value="3") 3
+				option(value="4") 4
+			p Special Considerations
+			.home
+				input.homeGroup(type="checkbox" name="earthquakeZone" value="earthquakeZone")
+				|  Earthquake Zone
+				br
+				input.homeGroup(type="checkbox" name="floodZone" value="floodZone")
+				|  Flood Zone
+				br
+				input.homeGroup(type="checkbox" name="tornadoZone" value="tornadoZone")
+				|  Tornado Zone
+				br
+				input.homeGroup(type="checkbox" name="hurricaneZone" value="hurricaneZone")
+				|  Hurricane Zone
+				br
+				input.homeGroup(type="checkbox" name="wildfireZone" value="wildfireZone")
+				|  Wildfire Zone
+				br
+			.travel
+				input#travel(type="checkbox" name="backCountry" value="backCountry")
+				|  Back Country Driving
+			br
+			input#submit-questionnaire(type="submit" name="submit" value="Submit")
+
+
