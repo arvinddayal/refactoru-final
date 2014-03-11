@@ -5,6 +5,7 @@ block content
 	.container
 		p This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
 		form.questionnaire#questionnaire(action="/submit" method="post")
+			input#name(type="text" name="kitName" placeholder="Kit Name")
 			select#purpose(name="purpose")
 				option(value="purpose") Purpose of Kit
 				option(value="home") Home
