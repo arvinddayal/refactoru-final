@@ -7,9 +7,9 @@ block content
 		form.questionnaire#questionnaire(action="/submit" method="post")
 			input#name(type="text" name="kitName" placeholder="Kit Name")
 			select#purpose(name="purpose")
-				option(value="purpose") Purpose of Kit
+				option(value="purpose") Location of Kit
 				option(value="home") Home
-				option(value="travel") Travel
+				option(value="vehicle") Vehicle
 			select#groupSize(name="groupSize")
 				option(value="groupSize") Group Size
 				option(value="1") 1
@@ -42,6 +42,9 @@ block content
 				input.homeGroup(type="checkbox" name="wildfireZone" value="wildfireZone")
 				|  Wildfire Zone
 				br
+				input.homeGroup(type="checkbox" name="limitedStorage" value="limitedStorage")
+				|  Limited Storage Space (i.e. You live in a small apartment)
+				br					
 			.travel
 				input#travel(type="checkbox" name="backCountry" value="backCountry")
 				|  Back Country Driving
