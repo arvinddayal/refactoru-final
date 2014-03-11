@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var indexController = require('./controllers/indexController.js');
 var app = express();
 
@@ -22,7 +22,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb://localhost/final');
+// mongoose.connect('mongodb://localhost/final');
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
