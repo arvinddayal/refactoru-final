@@ -10,3 +10,7 @@ p {
   text-align: center;
   font-weight: bold;
 }
+.error {
+  border: 2pt solid #f00;
+  margin-bottom: 16px;
+}

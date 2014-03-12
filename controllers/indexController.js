@@ -1,4 +1,4 @@
-// var UserModel = require('../models/countries');
+var UserModel = require('../models/kitModel');
 var UserController = module.exports = {
 
 	index: function(req,res){
@@ -6,6 +6,9 @@ var UserController = module.exports = {
 		res.render('index', date);
 	},
 	submit: function(req, res){
-		res.send(req.body);
+		var x = req.body;
+		var newKit = new UserModel(x);
+		newKit.save();
+		res.send("submitted");
 	}
 };

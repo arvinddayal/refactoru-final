@@ -6,8 +6,8 @@ block content
 		p This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
 		form.questionnaire#questionnaire(action="/submit" method="post")
 			input#name(type="text" name="kitName" placeholder="Kit Name")
-			select#purpose(name="purpose")
-				option(value="purpose") Location of Kit
+			select#location(name="location")
+				option(value="location") Location of Kit
 				option(value="home") Home
 				option(value="vehicle") Vehicle
 			select#groupSize(name="groupSize")
@@ -19,7 +19,7 @@ block content
 				option(value="5") 5
 				option(value="6") 6
 			select#pets(name="pets") Pets
-				option(value="0") # of Pets
+				option(value="pets") # of Pets
 				option(value="0") 0
 				option(value="1") 1
 				option(value="2") 2
@@ -30,23 +30,20 @@ block content
 				input.homeGroup(type="checkbox" name="earthquakeZone" value="earthquakeZone")
 				|  Earthquake Zone
 				br
-				input.homeGroup(type="checkbox" name="floodZone" value="floodZone")
+				input.homeGroup(type="checkbox" name="floodZone" value="true")
 				|  Flood Zone
 				br
-				input.homeGroup(type="checkbox" name="tornadoZone" value="tornadoZone")
+				input.homeGroup(type="checkbox" name="tornadoZone" value="true")
 				|  Tornado Zone
 				br
-				input.homeGroup(type="checkbox" name="hurricaneZone" value="hurricaneZone")
+				input.homeGroup(type="checkbox" name="hurricaneZone" value="true")
 				|  Hurricane Zone
 				br
-				input.homeGroup(type="checkbox" name="wildfireZone" value="wildfireZone")
-				|  Wildfire Zone
-				br
-				input.homeGroup(type="checkbox" name="limitedStorage" value="limitedStorage")
+				input.homeGroup(type="checkbox" name="limitedStorage" value="true")
 				|  Limited Storage Space (i.e. You live in a small apartment)
 				br					
 			.travel
-				input#travel(type="checkbox" name="backCountry" value="backCountry")
+				input#travel(type="checkbox" name="backCountry" value="true")
 				|  Back Country Driving
 			br
 			input#submit-questionnaire(type="submit" name="submit" value="Submit")
