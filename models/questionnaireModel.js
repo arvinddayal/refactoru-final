@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-var kitSchema = mongoose.Schema({
+var questionnaireSchema = mongoose.Schema({
 	kitName: String,
+	timeCreated: String,
 	location: String,
 	groupSize: String,
 	pets: String,
@@ -13,4 +14,4 @@ var kitSchema = mongoose.Schema({
 });
 
 
-var KitModel = module.exports = mongoose.model('kit', kitSchema);
+var questionnaireModel = module.exports = mongoose.model('questionnaire', questionnaireSchema);

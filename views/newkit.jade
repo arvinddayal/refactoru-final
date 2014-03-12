@@ -1,0 +1,37 @@
+extends layout
+
+block content
+	.container
+		h1 Here are the parameters you entered:
+			ul
+			li Kit Name: #{data.kitName}
+			li Kit Location: #{data.location}
+			li Size of Group: #{data.groupSize}
+			li # of Pets: #{data.pets}
+			if (data.earthquakeZone)
+				li Earthquake Zone
+			if (data.floodZone)
+				li Flood Zone
+			if (data.tornadoZone)
+				li Tornado Zone
+			if (data.hurricaneZone)
+				li Hurricane Zone
+			if (data.limitedStorage)
+				li Limited Storage
+			if (data.backCountry)
+				li Backcountry Driving
+		.reveal-modal#myModal(data-reveal)
+			h2 Login With:
+			ul.button-group 
+				li 
+					a(href="/login/google").button#google-button Google
+				li 
+					a(href="/login/facebook").button#facebook-button Facebook					
+				a.close-reveal-modal &#215
+		.login
+			ul.button-group
+				li
+					a(href="/").button I want to make changes
+				li
+					a(href="#" data-reveal-id="myModal").button This looks good, show me my kit.
+

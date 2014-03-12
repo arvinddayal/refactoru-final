@@ -1,14 +1,13 @@
-var UserModel = require('../models/kitModel');
+var QuestionnaireModel = require('../models/questionnaireModel');
 var UserController = module.exports = {
 
 	index: function(req,res){
-		date = new Date();
-		res.render('index', date);
+		res.render('index');
 	},
 	submit: function(req, res){
 		var x = req.body;
-		var newKit = new UserModel(x);
-		newKit.save();
-		res.send("submitted");
+		var newQuestionnaire = new QuestionnaireModel(x);
+		newQuestionnaire.save();
+		res.render('newkit', {data:req.body});
 	}
 };

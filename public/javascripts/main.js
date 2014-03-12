@@ -1,5 +1,7 @@
 $(function(){
-
+	//Modal functions
+	$(document).foundation();
+	$('#myModal').foundation('reveal', 'close');
 	
 	//Hide/shows appropriate special considerations depending on purpose
 	$('#location').change(function(){
@@ -25,12 +27,15 @@ $(function(){
 
 	//Validates form, stops submission if necessary
 	$('#submit-questionnaire').click(function(e){
-
+		var date = new Date();
+		var dayStr= date.toDateString();
+		//Puts full date into hidden timecreated input
+		$('#timeCreated').val(date);
+		//Puts current date into Name box if empty
 		if ($('#name').val()==="") {
-			e.preventDefault();
-			$('#name').addClass('error');
-			console.log("hi");
+			$('#name').val(moment(dayStr).format("MM/DD/YYYY"));
 		}
+		//Form Validation
 		if ($('#location').val()==="location") {
 			e.preventDefault();
 			$('#location').addClass('error');
@@ -44,9 +49,6 @@ $(function(){
 			$('#pets').addClass('error');
 		}
 	});
-
-
-	
 
 
 
