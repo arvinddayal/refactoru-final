@@ -21,7 +21,7 @@ var facebookStrategy = new FacebookStrategy({
 	clientSecret: '5685b05fe219709f59102ffdff9ec180',
 	callbackURL: 'http://localhost:3000/facebook/callback'
 }, function(accessToken, refreshToken, profile, done){
-	console.log(accessToken, refreshToken, profile);
+	// console.log(accessToken, refreshToken, profile);
 	
 	UserModel.findOne({userid: profile.id}, function(err, user){
 		if(user){
@@ -48,7 +48,7 @@ var googleStrategy = new GoogleStrategy({
     callbackURL: "http://127.0.0.1:3000/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log(accessToken, refreshToken, profile);
+    // console.log(accessToken, refreshToken, profile);
 	
 	UserModel.findOne({userid: profile.id}, function(err, user){
 		if(user){

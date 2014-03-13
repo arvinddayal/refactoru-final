@@ -1,14 +1,14 @@
 module.exports = {
 	login: function(req, res) {
 	if (req.isAuthenticated()){
-		res.render('success');
+		res.redirect('/userpage');
 	}
 	else {
-		res.render('success');
+		res.render('index');
 	}
 	},
 	loginSuccess: function(req,res) {
-		res.render('success');
+		res.redirect('/userpage');
 	},
 	logout: function(req,res) {
 		req.logout();
@@ -18,7 +18,7 @@ module.exports = {
 		if(req.isAuthenticated()){
 			return next();
 		}
-		res.render('success');
+		res.render('index');
 	},
 	ensureAuthenticatedAjax: function(req,res,next){
 		if(req.isAuthenticated()){

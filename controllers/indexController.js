@@ -1,6 +1,6 @@
 var QuestionnaireModel = require('../models/questionnaireModel');
 var ItemModel = require('../models/itemModel');
-var UserController = module.exports = {
+module.exports = {
 
 	index: function(req,res){
 		res.render('index');
@@ -10,6 +10,9 @@ var UserController = module.exports = {
 		var newQuestionnaire = new QuestionnaireModel(x);
 		newQuestionnaire.save();
 		res.render('newkit', {data:req.body});
+	},
+	success: function(req,res){
+		res.render('success');
 	},
 	items: function(req, res){
 		res.render('items');

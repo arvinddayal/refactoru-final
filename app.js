@@ -9,12 +9,11 @@ var path = require('path');
 var mongoose = require('mongoose');
 var indexController = require('./controllers/indexController.js');
 var authController = require('./controllers/authController');
+var userController = require('./controllers/userController');
 var app = express();
 var passport = require('passport');
 var passportconfig = require('./config/passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -44,11 +43,18 @@ if ('development' == app.get('env')) {
 app.get('/', indexController.index);
 //Submits Questionnaire on main page
 app.post('/submit', indexController.submit);
-//New Item Input Page
+//New Item Input Page(no visible links to this page)
 app.get('/items', indexController.items);
-//Adds new items to DB(no visible links to this page)
+//Adds new items to DB
 app.post('/newItem', indexController.newItem);
-
+//Test Route for checking auth
+app.get('/success',
+	authController.ensureAuthenticated,
+	indexController.success);
+//User Page after auth
+app.get('/userpage',
+	authController.ensureAuthenticated,
+	userController.display);
 //User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(
@@ -65,9 +71,7 @@ app.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   authController.loginSuccess
 );
-app.get('/success', function(req,res){
-	res.render('success');
-});
+
 app.get('/logout', authController.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
