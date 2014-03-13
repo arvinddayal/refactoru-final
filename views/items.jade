@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	.container
+		.item-input
+			form.new-item#new-item(action="/newItem" method="post")
+				input(type="text" name="itemName" placeholder="Item Name" autofocus="autofocus" va)
+				input(type="text" name="description" placeholder="Description")
+				input(type="text" name="quantity" placeholder="Quantity")
+				input(type="text" name="unitOfMeasure" placeholder="Unit Of Measure")
+				input(type="text" name="category" placeholder="Category")
+				input(type="text" name="expiration" placeholder="Expiration in Months")
+				input(type="submit" name="submit" value="Submit")
+			a(href="/" class="button expand") Home
+

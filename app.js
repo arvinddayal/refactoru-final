@@ -39,33 +39,35 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//Routes
+//Index Page
 app.get('/', indexController.index);
+//Submits Questionnaire on main page
 app.post('/submit', indexController.submit);
+//New Item Input Page
+app.get('/items', indexController.items);
+//Adds new items to DB(no visible links to this page)
+app.post('/newItem', indexController.newItem);
 
+//User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(
 	'/facebook/callback',
 	passport.authenticate('facebook', {failureRedirect: '/'}),
 	authController.loginSuccess
 );
-
 app.get('/login/google', passport.authenticate('google',
 		{ scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email']}),
 		function(req, res){
 		}
 );
-
 app.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   authController.loginSuccess
 );
-
-
 app.get('/success', function(req,res){
 	res.render('success');
 });
-
-
 app.get('/logout', authController.logout);
 
 http.createServer(app).listen(app.get('port'), function(){

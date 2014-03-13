@@ -1,0 +1,30 @@
+Questionnaire
+
+	Purpose
+	-Home
+	-Travel
+
+	Group Size
+
+	Pets #
+
+	Special
+	-Earthquake Zone
+	-Flood Zone
+	-Tornado Zone
+
+DB
+-Name
+-Purpose
+-Category
+-Standard Expiration
+-Category
+	0 - All
+	1 - earthquake
+	2 - flood
+	3 - tornado
+	4 - limited storage
+	5 - back country
+
+Do food last, factor calories.
+
