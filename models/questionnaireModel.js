@@ -1,16 +1,16 @@
 var mongoose = require('mongoose');
 var questionnaireSchema = mongoose.Schema({
 	kitName: String,
-	timeCreated: String,
+	timeCreated: Date,
 	location: String,
-	groupSize: String,
-	pets: String,
-	earthquakeZone: {type: String, default: "false"},
-	floodZone: {type: String, default: "false"},
-	tornadoZone: {type: String, default: "false"},
-	hurricaneZone: {type: String, default: "false"},
-	limitedStorage: {type: String, default: "false"},
-	backCountry: {type: String, default: "false"}
+	groupSize: Number,
+	pets: Number,
+	earthquakeZone: {type: Boolean, default: false},
+	floodZone: {type: Boolean, default: false},
+	tornadoZone: {type: Boolean, default: false},
+	hurricaneZone: {type: Boolean, default: false},
+	limitedStorage: {type: Boolean, default: false},
+	backCountry: {type: Boolean, default: false}
 });
 
 

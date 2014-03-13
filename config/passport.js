@@ -29,8 +29,11 @@ var facebookStrategy = new FacebookStrategy({
 		}
 		var newUser = new UserModel({
 			userid: profile.id,
-			username: profile.username,
-			profile: profile
+			profileSource: profile.provider,
+			username: profile.displayName,
+			firstName: profile.name.givenName,
+			lastName: profile.name.familyName,
+			email: profile._json.email
 		});
 		newUser.save(function(err, doc){
 			return done(err, doc);
@@ -52,9 +55,12 @@ var googleStrategy = new GoogleStrategy({
 			return done(err, user);
 		}
 		var newUser = new UserModel({
+			profileSource: profile.provider,
 			userid: profile.id,
-			username: profile.username,
-			profile: profile
+			username: profile.displayName,
+			firstName: profile.name.givenName,
+			lastName: profile.name.familyName,
+			email: profile._json.email
 		});
 		newUser.save(function(err, doc){
 			return done(err, doc);
