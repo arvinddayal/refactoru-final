@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var ItemModel = require('../models/itemModel');
+
 var userSchema = new mongoose.Schema({
 	userid: String,
 	profileSource: String,
@@ -6,7 +8,7 @@ var userSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	email: String,
-	kits: Object
+	kits: [{type: mongoose.Schema.ObjectId, ref: 'ItemModel.itemSchema'}]
 });
 
 var UserModel = module.exports = mongoose.model('user', userSchema);
