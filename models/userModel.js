@@ -8,7 +8,20 @@ var userSchema = new mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	email: String,
-	kits: [{type: mongoose.Schema.ObjectId, ref: 'ItemModel.itemSchema'}]
+	kits:[{
+		kitName:String,
+		kitItems: [{
+			itemName: String,
+			description: String,
+			quantity: {type: Number, default: 1},
+			unitOfMeasure: String,
+			category: [Number],
+			expiration: Number,
+			inKit: String,
+			addedDate: String,
+			expDate: String
+		}],
+	}]
 });
 
 var UserModel = module.exports = mongoose.model('user', userSchema);
