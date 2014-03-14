@@ -3,4 +3,12 @@ extends layout
 block content
 	p Hello #{profile.firstName}
 	p #{questions}
+	//- for q in questions
+	//- 	ul
+	//- 		li #{q.itemName}
+	//- 		li #{q.description}
+	//- 		li #{q.quantity}
+	//- 		li #{q.unitOfMeasure}
+	//- 		li #{q.category}
+	//- 		li #{q.expiration}
 	a(href="/" class="button expand") Home

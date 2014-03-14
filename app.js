@@ -54,7 +54,7 @@ app.get('/success',
 //User Page after auth
 app.get('/userpage',
 	authController.ensureAuthenticated,
-	userController.display);
+	userController.makeKit);
 //User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(

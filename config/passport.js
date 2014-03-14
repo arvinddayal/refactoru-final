@@ -1,7 +1,7 @@
 var passport = require('passport');
 var FacebookStrategy  = require('passport-facebook').Strategy;
 var GoogleStrategy  = require('passport-google-oauth').OAuth2Strategy;
-var UserModel = require('../models/UserModel');
+var UserModel = require('../models/userModel');
 var GOOGLE_CLIENT_ID = "317957063311-47ulg5coqcotqg7d0tdjncr543ji2oma.apps.googleusercontent.com";
 var GOOGLE_CLIENT_SECRET = "JwQ6qEdqkJUCAeYxgqvJM_Is";
 

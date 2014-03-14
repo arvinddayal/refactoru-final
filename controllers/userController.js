@@ -1,44 +1,30 @@
 var QuestionnaireModel = require('../models/questionnaireModel');
 var ItemModel = require('../models/itemModel');
-var UserModel = require('../models/UserModel');
+var UserModel = require('../models/userModel');
 
 module.exports = {
-	display: function(req,res){
+	makeKit: function(req,res){
 		QuestionnaireModel.findOne({}).sort("-timeCreated").exec( function(err,doc){
 			var query = {"userid": req.user.userid};
 			var newKitName = doc.kitName;
-			// UserModel.update(query, { $pushAll:{"kits":[{"kitName":newKitName, "kitItems": {"itemName":"testname"}}]}}).exec();
 			UserModel.findOne(query, function(err,user){
 				ItemModel.find({}, function(err, items){
-					var allItems = {kitName:"testName", kitItems:[]};
+					var allItems = {kitName:newKitName, timeCreated: new Date(),kitItems:[]};
 					for (var i = 0; i < items.length; i++) {
-						allItems.kitItems.push({itemName:items[i].itemName});
+						if (items[i].category.indexOf(1) > -1){
+							allItems.kitItems.push({itemName:items[i].itemName, description:items[i].description, quantity:items[i].quantity,unitOfMeasure:items[i].unitOfMeasure,category:items[i].category,expiration:items[i].expiration});
+						}
 					}
 					user.kits.push(allItems);
 					user.save(function(err, newUser){
 						res.render('userpage', {
 							profile: req.user,
-							questions: doc
+							questions: newUser.kits
 						});
 					});
 				});
 			});
-
-	
 		});
-		// QuestionnaireModel.findOne({}).sort("-timeCreated").exec( function(err,doc){
-				// var kitArr = [];
-				// console.log(doc.kitName);
-				// UserModel.find({}, function(err, doc){
-				// 	console.log(doc);
-				// });
-				// if (doc.earthquakeZone===true){
-				// 	ItemModel.find({category: 1}, function(err,doc){
-				// 		var newArr = kitArr.concat(doc);
-				// 		console.log(newArr);
-				// 	});
-				// }
-			// });
 	},
 
 

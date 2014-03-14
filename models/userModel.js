@@ -10,6 +10,7 @@ var userSchema = new mongoose.Schema({
 	email: String,
 	kits:[{
 		kitName:String,
+		timeCreated: Date,
 		kitItems: [{
 			itemName: String,
 			description: String,
