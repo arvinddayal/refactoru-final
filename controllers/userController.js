@@ -1,6 +1,7 @@
 var QuestionnaireModel = require('../models/questionnaireModel');
 var ItemModel = require('../models/itemModel');
 var UserModel = require('../models/userModel');
+var _ = require("underscore");
 
 module.exports = {
 	makeKit: function(req,res){
@@ -73,14 +74,18 @@ module.exports = {
 							}
 						}
 					}
-					// for (var i = 0; i < allItems.kitItems.length; i++) {
-					// 	if (allItems.kitItems[i].itemName.indexOf(allItems.kitItems[i].itemName) > -1){
-					// 		allItems.kitItems.splice(i);
-					// 	}
-					// }
-
-					console.log(uniqueArray);
-					// user.kits.push(allItems);
+					
+					//Removes duplicate kit items
+					var itemsArr = allItems.kitItems;
+					for (var i = 0; i < itemsArr.length; i++) {
+						for (var j = i+1; j < itemsArr.length; j++) {
+							if(itemsArr[j].itemName == itemsArr[i].itemName) {
+								itemsArr.splice(j,1);
+								--j;
+							}
+						}
+					}
+					user.kits.push(allItems);
 					user.save(function(err, newUser){
 						res.render('userpage', {
 							profile: req.user,
