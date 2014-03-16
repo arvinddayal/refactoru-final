@@ -5,7 +5,7 @@ var _ = require("underscore");
 
 module.exports = {
 	makeKit: function(req,res){
-		QuestionnaireModel.findOne({}).sort("-timeCreated").exec( function(err,doc){
+		QuestionnaireModel.findOne({}).exec( function(err,doc){
 			var query = {"userid": req.user.userid};
 			var newKitName = doc.kitName;
 			var pets = doc.pets;
@@ -86,6 +86,7 @@ module.exports = {
 						}
 					}
 					user.kits.push(allItems);
+					QuestionnaireModel.remove().exec();
 					user.save(function(err, newUser){
 						res.render('userpage', {
 							profile: req.user,
