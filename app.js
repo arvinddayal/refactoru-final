@@ -55,6 +55,8 @@ app.get('/success',
 app.get('/userpage',
 	authController.ensureAuthenticated,
 	userController.makeKit);
+// deletes a kit
+app.get('/userpage/:id', userController.remove);
 //User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(

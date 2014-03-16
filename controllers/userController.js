@@ -96,6 +96,12 @@ module.exports = {
 			});
 		});
 	},
-
+	remove: function(req,res){
+		var x = req.params.id;
+		console.log("method");
+		UserModel.remove({_id: x}, function(err, doc){
+			res.render('userpage');
+		});
+	}
 
 };

@@ -9,7 +9,7 @@ module.exports = {
 		var x = req.body;
 		var newQuestionnaire = new QuestionnaireModel(x);
 		newQuestionnaire.save();
-		res.render('newkit', {data:req.body});
+		res.render('newKitReview', {data:req.body});
 	},
 	success: function(req,res){
 		res.render('success');

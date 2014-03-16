@@ -50,6 +50,16 @@ $(function(){
 		}
 	});
 
+//Deletes Kit
+	$('#delete-kit').click(function(){
+		console.log($(this).text());
+		$.ajax("/userpage/#{q._id}", {
+			data: $(this).val(),
+			success: function(data){
+
+			}
+		});
+	});
 
 
 
