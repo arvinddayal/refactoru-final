@@ -6,7 +6,7 @@ block content
 		.kit-container
 			.kit-name#kit-name
 				h2 Kit Name: #{q.kitName}
-				a(href="#{q._id}").delete#delete Delete Kit
+				a(href="#" data-profileid="#{profile._id}" data-kitid="#{q._id}").delete#delete Delete Kit
 			for x in q.kitItems
 				.row
 					.large-2.column 

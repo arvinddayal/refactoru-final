@@ -56,7 +56,7 @@ app.get('/showprofile',
 	authController.ensureAuthenticated,
 	userController.makeKit);
 //Deletes Kit
-app.get('/:id', userController.deleteKit);
+app.get('/delete/:id', userController.deleteKit);
 //Updates in kit/expiration
 app.get('/update/:id', userController.update);
 //User Auth

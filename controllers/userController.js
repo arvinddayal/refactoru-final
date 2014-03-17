@@ -106,18 +106,21 @@ module.exports = {
 		});
 	},
 	deleteKit: function(req,res){
-		var x = req.params.id;
-		UserModel.pull(x, function(err, doc){
-			res.render('showprofile');
+		var user = req.query.profileID;
+		var kitToDel = req.query.kitID;
+		UserModel.findById(user, function(err,user){
+			for (var i = 0; i < user.kits.length; i++) {
+				if (user.kits[i]._id == kitToDel) {
+					user.kits.splice(i,1);
+					user.save();
+				}
+			}
 		});
 	},
 	update: function(req,res){
 		var user = req.query.profileID;
 		var kit = req.query.kitID;
 		var item = req.query.itemID;
-		// UserModel.find({kits:{$elemMatch:{_id:kit}}}, function(err,doc){
-		// 	console.log(doc);
-		// });
 		UserModel.findById(user, function(err,user){
 			for (var i = 0; i < user.kits.length; i++) {
 				if (user.kits[i]._id == kit) {

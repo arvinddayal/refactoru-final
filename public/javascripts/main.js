@@ -63,6 +63,18 @@ $(function(){
 		});
 	});
 
+//Deletes removes kit from DB
+	$(document).on('click', "#delete", function(){
+		var profileID = $(this).data("profileid");
+		var kitID = $(this).data("kitid");
+		$.ajax('/delete/'+kitID,{
+			data: {profileID:profileID,kitID:kitID},
+			success: function(data){
+				console.log(data);
+			}
+		});
+	});
+
 
 
 });
