@@ -5,7 +5,8 @@ var itemSchema = new mongoose.Schema({
 	quantity: {type: Number, default: 1},
 	unitOfMeasure: String,
 	category: [Number],
-	expiration: Number
+	expiration: Number,
+	url: String
 });
 
 var ItemModel = module.exports = mongoose.model('item', itemSchema);

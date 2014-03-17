@@ -18,6 +18,7 @@ var userSchema = new mongoose.Schema({
 			unitOfMeasure: String,
 			category: [Number],
 			expiration: Number,
+			url: String,
 			inKit: String,
 			addedDate: String,
 			expDate: String

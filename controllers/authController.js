@@ -1,14 +1,14 @@
 module.exports = {
 	login: function(req, res) {
 	if (req.isAuthenticated()){
-		res.redirect('/userpage');
+		res.redirect('/showprofile');
 	}
 	else {
 		res.render('index');
 	}
 	},
 	loginSuccess: function(req,res) {
-		res.redirect('/userpage');
+		res.redirect('/showprofile');
 	},
 	logout: function(req,res) {
 		req.logout();
@@ -25,5 +25,5 @@ module.exports = {
 			return next();
 		}
 		res.send(401);
-	}
+	},
 };

@@ -48,15 +48,15 @@ app.get('/items', indexController.items);
 //Adds new items to DB
 app.post('/newItem', indexController.newItem);
 //Test Route for checking auth
-app.get('/success',
-	authController.ensureAuthenticated,
-	indexController.success);
-//User Page after auth
-app.get('/userpage',
+// app.get('/success',
+// 	authController.ensureAuthenticated,
+// 	indexController.success);
+//Shows profile
+app.get('/showprofile',
 	authController.ensureAuthenticated,
 	userController.makeKit);
-// deletes a kit
-app.get('/userpage/:id', userController.remove);
+//Deletes Kit
+app.get('/:id', userController.deleteKit);
 //User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(

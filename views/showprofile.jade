@@ -1,0 +1,21 @@
+extends layout
+
+block content
+	p Hello #{profile.firstName}
+	for q in questions
+		.kit-container
+			.kit-name#kit-name
+				h2 Kit Name: #{q.kitName}
+				a(href="#{q._id}").delete#delete Delete Kit
+			for x in q.kitItems
+				.row
+					.large-2.column 
+						img(src="#{x.url}")
+					.large-2.column Quantity: #{x.quantity}
+					.large-2.column Item: #{x.itemName}
+					.large-2.column Added: #{x.quantity}
+					.large-2.column Expiration: #{x.quantity}
+					.large-2.column
+						img(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")
+
+	a(href="/" class="button expand") Home
