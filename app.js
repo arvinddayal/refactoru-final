@@ -57,6 +57,8 @@ app.get('/showprofile',
 	userController.makeKit);
 //Deletes Kit
 app.get('/:id', userController.deleteKit);
+//Updates in kit/expiration
+app.get('/update/:id', userController.update);
 //User Auth
 app.get('/login/facebook', passport.authenticate('facebook'));
 app.get(

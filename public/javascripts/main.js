@@ -50,13 +50,15 @@ $(function(){
 		}
 	});
 
-//Deletes Kit
-	$('#delete-kit').click(function(){
-		console.log($(this).text());
-		$.ajax("/userpage/#{q._id}", {
-			data: $(this).val(),
+//Clicking Checkmark updates added date and expiration date
+	$(document).on('click', "#check", function(){
+		var profileID = $(this).data("profileid");
+		var kitID = $(this).data("kitid");
+		var itemID = $(this).data('itemid');
+		$.ajax('/update/'+itemID,{
+			data: {profileID:profileID,kitID:kitID,itemID:itemID},
 			success: function(data){
-
+				console.log(data);
 			}
 		});
 	});

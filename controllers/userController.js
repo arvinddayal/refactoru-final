@@ -105,7 +105,19 @@ module.exports = {
 		});
 	},
 	deleteKit: function(req,res){
-		console.log(req.params.id);
+		var x = req.params.id;
+		UserModel.pull(x, function(err, doc){
+			res.render('showprofile');
+		});
+	},
+	update: function(req,res){
+		var prof = req.query.profileID;
+		var kit = req.query.kitID;
+		var item = req.query.itemID;
+		UserModel.find({"_id":prof}, function(err,user){
+			console.log(user);
+		});
+	
 	}
 
 };
