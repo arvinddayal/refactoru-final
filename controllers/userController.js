@@ -1,7 +1,8 @@
 var QuestionnaireModel = require('../models/questionnaireModel');
 var ItemModel = require('../models/itemModel');
 var UserModel = require('../models/userModel');
-
+var moment = require('moment');
+moment().format();
 
 module.exports = {
 	makeKit: function(req,res){
@@ -111,11 +112,28 @@ module.exports = {
 		});
 	},
 	update: function(req,res){
-		var prof = req.query.profileID;
+		var user = req.query.profileID;
 		var kit = req.query.kitID;
 		var item = req.query.itemID;
-		UserModel.find({"_id":prof}, function(err,user){
-			console.log(user);
+		// UserModel.find({kits:{$elemMatch:{_id:kit}}}, function(err,doc){
+		// 	console.log(doc);
+		// });
+		UserModel.findById(user, function(err,user){
+			for (var i = 0; i < user.kits.length; i++) {
+				if (user.kits[i]._id == kit) {
+					var curKit = user.kits[i];
+						for (var j = 0; j < curKit.kitItems.length; j++) {
+							if (curKit.kitItems[j]._id == item) {
+								var date = new Date();
+								var dayStr= date.toDateString();
+								var curDate = moment(dayStr).format("MM/DD/YYYY");
+								curKit.kitItems[j].addedDate= curDate;
+								curKit.kitItems[j].expDate = moment(curDate).add('months', curKit.kitItems[j].expiration).format("MM/DD/YYYY");
+								user.save();
+							}
+						}
+				}
+			}
 		});
 	
 	}

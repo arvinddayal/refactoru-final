@@ -18,10 +18,10 @@ block content
 							img(src="/images/icons/check.png" data-profileid="#{profile._id}" data-kitid="#{q._id}" data-itemid="#{x._id}")#check
 					else
 						.large-2.column Added: #{x.addedDate}
-					if (x.expiration) === 0
+					if (x.expiration) === 0 || (x.expiration) === (x.addedDate) || (x.addedDate)==null
 						.large-2.column Expiration: N/A
 					else 
-						.large-2.column Expiration: #{x.expiration}
+						.large-2.column Expiration: #{x.expDate}
 					.large-2.column
 						img(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")
 
