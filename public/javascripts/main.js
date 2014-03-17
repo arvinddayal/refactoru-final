@@ -55,22 +55,27 @@ $(function(){
 		var profileID = $(this).data("profileid");
 		var kitID = $(this).data("kitid");
 		var itemID = $(this).data('itemid');
+		var that = $(this);
 		$.ajax('/update/'+itemID,{
 			data: {profileID:profileID,kitID:kitID,itemID:itemID},
 			success: function(data){
-				console.log(data);
+				if (data.expDate !== data.addedDate){
+					$(that).parent().next().empty().text("Expiration: "+data.expDate);
+				}
+				$(that).parent().empty().text("Added: "+data.addedDate);
 			}
 		});
 	});
 
-//Deletes removes kit from DB
+//Deletes removes kit from DB, success removes Kit from DOM
 	$(document).on('click', "#delete", function(){
 		var profileID = $(this).data("profileid");
 		var kitID = $(this).data("kitid");
+		var that = $(this);
 		$.ajax('/delete/'+kitID,{
 			data: {profileID:profileID,kitID:kitID},
 			success: function(data){
-				console.log(data);
+				$(that).parent().parent().remove();
 			}
 		});
 	});

@@ -37,6 +37,11 @@ mongoose.connect('mongodb://localhost/final');
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+// Test Route for checking auth
+app.get('/success',
+	authController.ensureAuthenticated,
+	indexController.success);
+
 
 //Routes
 //Index Page
@@ -47,10 +52,6 @@ app.post('/submit', indexController.submit);
 app.get('/items', indexController.items);
 //Adds new items to DB
 app.post('/newItem', indexController.newItem);
-//Test Route for checking auth
-// app.get('/success',
-// 	authController.ensureAuthenticated,
-// 	indexController.success);
 //Shows profile
 app.get('/showprofile',
 	authController.ensureAuthenticated,

@@ -112,9 +112,11 @@ module.exports = {
 			for (var i = 0; i < user.kits.length; i++) {
 				if (user.kits[i]._id == kitToDel) {
 					user.kits.splice(i,1);
-					user.save();
 				}
 			}
+			user.save(function(err, newUser){
+						res.send(newUser);
+			});
 		});
 	},
 	update: function(req,res){
@@ -132,11 +134,22 @@ module.exports = {
 								var curDate = moment(dayStr).format("MM/DD/YYYY");
 								curKit.kitItems[j].addedDate= curDate;
 								curKit.kitItems[j].expDate = moment(curDate).add('months', curKit.kitItems[j].expiration).format("MM/DD/YYYY");
-								user.save();
 							}
 						}
 				}
 			}
+			user.save(function(err, newUser){
+				for (var i = 0; i < newUser.kits.length; i++) {
+					if (newUser.kits[i]._id == kit) {
+						var newCurKit = newUser.kits[i];
+							for (var j = 0; j < newCurKit.kitItems.length; j++) {
+								if (newCurKit.kitItems[j]._id == item) {
+									res.send({addedDate:newCurKit.kitItems[j].addedDate, expDate:newCurKit.kitItems[j].expDate});
+								}
+							}
+					}
+				}
+			});
 		});
 	
 	}

@@ -5,8 +5,8 @@ block content
 	for q in questions
 		.kit-container
 			.kit-name#kit-name
-				h2 Kit Name: #{q.kitName}
-				a(href="#" data-profileid="#{profile._id}" data-kitid="#{q._id}").delete#delete Delete Kit
+				h2 Kit: #{q.kitName}
+				a(data-profileid="#{profile._id}" data-kitid="#{q._id}").delete#delete Delete Kit
 			for x in q.kitItems
 				.row
 					.large-2.column 
@@ -19,9 +19,9 @@ block content
 					else
 						.large-2.column Added: #{x.addedDate}
 					if (x.expiration) === 0 || (x.expiration) === (x.addedDate) || (x.addedDate)==null
-						.large-2.column Expiration: N/A
+						.large-2.column#exp-date Expiration: N/A
 					else 
-						.large-2.column Expiration: #{x.expDate}
+						.large-2.column#exp-date Expiration: #{x.expDate}
 					.large-2.column
 						img(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")
 
