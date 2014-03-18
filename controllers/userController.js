@@ -22,6 +22,7 @@ module.exports = {
 				var hurricane = doc.hurricaneZone;
 				var limited = doc.limitedStorage;
 				var backcountry = doc.backCountry;
+				var groupSize = doc.groupSize;
 
 
 				UserModel.findOne(query, function(err,user){
@@ -30,6 +31,12 @@ module.exports = {
 						//Pushes all general items (category 0)
 						for (var i = 0; i < items.length; i++) {
 							if (items[i].category.indexOf(0) > -1){
+								allItems.kitItems.push({itemName:items[i].itemName, description:items[i].description, quantity:items[i].quantity*(groupSize+(pets/2)),unitOfMeasure:items[i].unitOfMeasure,category:items[i].category,expiration:items[i].expiration,url:items[i].url});
+							}
+						}
+						//Pushes all general items w/ fixed qty (category 7)
+						for (var i = 0; i < items.length; i++) {
+							if (items[i].category.indexOf(7) > -1){
 								allItems.kitItems.push({itemName:items[i].itemName, description:items[i].description, quantity:items[i].quantity,unitOfMeasure:items[i].unitOfMeasure,category:items[i].category,expiration:items[i].expiration,url:items[i].url});
 							}
 						}
@@ -37,7 +44,7 @@ module.exports = {
 						if(pets > 0){
 							for (var i = 0; i < items.length; i++) {
 								if (items[i].category.indexOf(6) > -1){
-									allItems.kitItems.push({itemName:items[i].itemName, description:items[i].description, quantity:items[i].quantity,unitOfMeasure:items[i].unitOfMeasure,category:items[i].category,expiration:items[i].expiration,url:items[i].url});
+									allItems.kitItems.push({itemName:items[i].itemName, description:items[i].description, quantity:items[i].quantity*pets,unitOfMeasure:items[i].unitOfMeasure,category:items[i].category,expiration:items[i].expiration,url:items[i].url});
 								}
 							}
 						}
@@ -97,7 +104,7 @@ module.exports = {
 						user.save(function(err, newUser){
 							res.render('showprofile', {
 								profile: req.user,
-								questions: newUser.kits
+								questions: newUser.kits.sort("-timeCreated")
 							});
 						});
 					});

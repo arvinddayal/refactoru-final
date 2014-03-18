@@ -1,14 +1,16 @@
 body {
-  padding: 10px;
   font: 14px Lucida Grande Helvetica Arial sans-serif;
 }
 a {
   color: #00b7ff;
 }
-nav,
-p {
+header {
   text-align: center;
   font-weight: bold;
+  font-size: 3em;
+}
+.questionnaire {
+  text-align: center;
 }
 .error {
   border: 2pt solid #f00;
@@ -21,8 +23,18 @@ p {
 .row {
   border: 1pt solid #000;
 }
+.test {
+  margin-top: 5px;
+}
+.kit-container {
+  font-size: 1.25em;
+}
+.columns,
+.row {
+  background-color: #fff;
+}
 img {
-  width: 5em;
+  width: 4.5em;
 }
 .tooltip {
   color: #f00;
