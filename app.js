@@ -31,8 +31,12 @@ app.use(passport.session());
 app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb://localhost/final');
-
+//Uses MongoHQ DB if on Heroku or local DB if on localhost
+if(global.process.env.MONGOHQ_URL){
+  mongoose.connect(global.process.env.MONGOHQ_URL);
+}else{
+  mongoose.connect('mongodb://localhost/final');
+}
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

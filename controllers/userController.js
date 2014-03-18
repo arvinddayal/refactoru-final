@@ -8,9 +8,12 @@ module.exports = {
 	makeKit: function(req,res){
 		QuestionnaireModel.findOne({}).exec( function(err,doc){
 			if (doc===null){
-				res.render('showprofile',
-				{profile: req.user, questions: req.user.kits}
-				);
+				res.render('showprofile',{
+					profile: req.user,
+					questions: req.user.kits.sort(function(a,b){
+						return b.timeCreated-a.timeCreated;
+					})
+				});
 			}
 			else {
 				var query = {"userid": req.user.userid};
@@ -102,9 +105,12 @@ module.exports = {
 						user.kits.push(allItems);
 						QuestionnaireModel.remove().exec();
 						user.save(function(err, newUser){
+
 							res.render('showprofile', {
 								profile: req.user,
-								questions: newUser.kits.sort("-timeCreated")
+								questions: newUser.kits.sort(function(a,b){
+									return b.timeCreated-a.timeCreated;
+								})
 							});
 						});
 					});
