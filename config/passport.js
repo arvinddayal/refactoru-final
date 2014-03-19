@@ -21,7 +21,7 @@ passport.deserializeUser(function(userid, done){
 var facebookStrategy = new FacebookStrategy({
 	clientID: facebookClientID,
 	clientSecret: facebookClientSecret,
-	callbackURL: 'http://localhost:3000/facebook/callback'
+	callbackURL: 'http://salty-stream-5400.herokuapp.com/facebook/callback'
 }, function(accessToken, refreshToken, profile, done){
 	// console.log(accessToken, refreshToken, profile);
 	
@@ -47,7 +47,7 @@ var facebookStrategy = new FacebookStrategy({
 var googleStrategy = new GoogleStrategy({
     clientID: googleClientID,
     clientSecret: googleClientSecret,
-    callbackURL: "http://127.0.0.1:3000/google/callback"
+    callbackURL: "http://salty-stream-5400.herokuapp.com/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // console.log(accessToken, refreshToken, profile);
