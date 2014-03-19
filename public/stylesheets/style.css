@@ -70,6 +70,9 @@ a {
 .error {
   border: 2pt solid #f00;
 }
+.kit-info {
+  cursor: pointer;
+}
 .kit-info > h2 {
   font-weight: bold;
   text-decoration: underline;
@@ -109,6 +112,7 @@ img {
 }
 .img-md {
   width: 3.5em;
+  cursor: pointer;
 }
 .delete {
   border: none;
