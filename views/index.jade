@@ -1,10 +1,19 @@
 extends layout
 
 block content
-	.row.title
-		.large-10.columns.header Welcome to the Emergency Kit Builder Site
-		.large-1.columns.rpad
-			a(href="#" class="button medium" data-reveal-id="myModal") Login
+	nav(class="top-bar" data-topbar)
+		ul.title-area
+			li.name
+				h1
+					a(href="#") Emergency Kit Builder
+		section(class="top-bar-section")
+			ul.right
+				li(data-reveal-id="myModal").active
+					a(href="#") Login
+	//- .row.title.white
+	//- 	.large-10.columns.header.white Welcome to the Emergency Kit Builder Site
+	//- 	.large-1.columns.rpad
+	//- 		a(href="#" class="button medium" data-reveal-id="myModal") Login
 	.row.space-down.white
 		p.q-title This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
 		form.questionnaire#questionnaire(action="/submit" method="post")

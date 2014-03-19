@@ -1,16 +1,21 @@
 extends layout
 
 block content
-	.row.title
-		.large-8.columns.header #{profile.firstName}'s Emergency Kits
-		.large-1.columns.rpad-q
-			a(href="/logout" class="button [radius round]") Logout
+	nav(class="top-bar" data-topbar)
+		ul.title-area
+			li.name
+				h1
+					a(href="#") #{profile.firstName}'s Emergency Kits
+		section(class="top-bar-section")
+			ul.right
+				li(data-reveal-id="myModal").active
+					a(href="/logout") Logout
 	for k in kits
 		.kit-container
 			.kit-name#kit-name
 				.row.delete
 					.large-12.columns
-						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right#delete Delete Kit
+						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right-align#delete Delete Kit
 				.row.white
 					.large-12.columns
 						h2 Kit: #{k.kitName}
@@ -19,23 +24,23 @@ block content
 						h3 Location: #{k.location} | Group Size: #{k.groupSize} | Pets: #{k.pets}
 			for x in k.kitItems
 				.row.white
-					.large-1.columns 
+					.medium-1.columns 
 						img(src="#{x.url}")
-					.large-2.columns.text #{x.itemName}
+					.medium-2.columns.text #{x.itemName}
 					if (x.unitOfMeasure) < 1
-						.large-2.columns #{x.quantity}
+						.medium-2.columns #{x.quantity}
 					else if (x.quantity) > 1
-						.large-2.columns #{x.quantity} #{x.unitOfMeasurePlural}
+						.medium-2.columns #{x.quantity} #{x.unitOfMeasurePlural}
 					else if (x.quantity) === 1
-						.large-2.columns #{x.quantity} #{x.unitOfMeasure}
+						.medium-2.columns #{x.quantity} #{x.unitOfMeasure}
 					if (x.addedDate)==null
-						.large-2.columns.text 
+						.medium-2.columns.text 
 							img.img-md(src="/images/icons/check.png" data-profileid="#{profile._id}" data-kitid="#{k._id}" data-itemid="#{x._id}")#check
 					else
-						.large-2.columns.text Added: #{x.addedDate}
+						.medium-2.columns.text Added: #{x.addedDate}
 					if (x.expiration) === 0 || (x.expiration) === (x.addedDate) || (x.addedDate)==null
-						.large-2.columns.text#exp-date Expiration: N/A
+						.medium-2.columns.text#exp-date Expiration: N/A
 					else 
-						.large-2.columns.text#exp-date Expiration: #{x.expDate}
-					.large-2.columns
+						.medium-2.columns.text#exp-date Expiration: #{x.expDate}
+					.medium-2.columns
 						img.img-md(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")

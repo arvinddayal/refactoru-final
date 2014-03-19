@@ -1,9 +1,14 @@
 body {
   font: 14px Lucida Grande Helvetica Arial sans-serif;
-  background-color: #deb887;
+  background: url("../images/ok.jpg");
+  background-size: cover;
 }
 a {
-  color: #00b7ff;
+  color: #f6f6f6;
+}
+.active {
+  text-align: center;
+  width: 100px;
 }
 .title {
   display: inline;
@@ -16,24 +21,19 @@ a {
 .rpad-q {
   margin-right: 40px;
 }
-.header {
-  text-align: right;
-  font-weight: bold;
-  font-size: 3em;
-  padding: 0;
-}
 .q-title {
-  font-size: 1.5em;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 1.75em;
+  text-align: center;
 }
 .space-down {
-  margin-top: 10px;
+  margin-top: 40px;
   width: 50%;
 }
-.right {
-  text-align: right;
-}
-.review-box {
-  margin-top: 10px;
+.right-align {
+  float: right;
+  color: #fffff0;
 }
 .reveal-modal {
   width: 30%;
@@ -51,6 +51,13 @@ a {
   padding-right: 15px;
   font-size: 1.5em;
 }
+.parameters {
+  font-size: 2.5em;
+}
+.review {
+  list-style-type: none;
+  font-size: 1.75em;
+}
 .error {
   border: 2pt solid #f00;
 }
@@ -61,6 +68,7 @@ a {
 }
 h2 {
   font-size: 2em;
+  text-align: center;
 }
 .special {
   font-weight: bold;
@@ -79,11 +87,13 @@ h2 {
 }
 .kit-container {
   font-size: 1.25em;
-  margin-bottom: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   text-align: center;
 }
 .white {
   background-color: #fff;
+  opacity: 0.95;
 }
 img {
   width: 4.5em;
@@ -95,5 +105,5 @@ img {
   border: none;
 }
 .tooltip {
-  color: #f00;
+  font-size: 1.5em;
 }

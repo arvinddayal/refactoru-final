@@ -75,7 +75,7 @@ $(function(){
 		$.ajax('/delete/'+kitID,{
 			data: {profileID:profileID,kitID:kitID},
 			success: function(data){
-				$(that).parent().parent().remove();
+				$(that).parent().parent().parent().parent().remove();
 			}
 		});
 	});

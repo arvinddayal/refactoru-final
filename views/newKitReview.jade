@@ -1,26 +1,31 @@
 extends layout
 
 block content
-	.row.review-box
+	nav(class="top-bar" data-topbar)
+		ul.title-area
+			li.name
+				h1
+					a(href="#") Emergency Kit Builder
+	.row.space-down.white
 		.large-12.columns
-			h1 Here are the parameters you entered:
-				ul
-					li Kit Name: #{data.kitName}
-					li Kit Location: #{data.location}
-					li Size of Group: #{data.groupSize}
-					li # of Pets: #{data.pets}
-					if (data.earthquakeZone)
-						li Earthquake Zone
-					if (data.floodZone)
-						li Flood Zone
-					if (data.tornadoZone)
-						li Tornado Zone
-					if (data.hurricaneZone)
-						li Hurricane Zone
-					if (data.limitedStorage)
-						li Limited Storage
-					if (data.backCountry)
-						li Backcountry Driving
+			h2.parameters Here are the parameters you entered:
+			ul.review
+				li Kit Name: #{data.kitName}
+				li Kit Location: #{data.location}
+				li Size of Group: #{data.groupSize}
+				li # of Pets: #{data.pets}
+				if (data.earthquakeZone)
+					li Earthquake Zone
+				if (data.floodZone)
+					li Flood Zone
+				if (data.tornadoZone)
+					li Tornado Zone
+				if (data.hurricaneZone)
+					li Hurricane Zone
+				if (data.limitedStorage)
+					li Limited Storage
+				if (data.backCountry)
+					li Backcountry Driving
 		.large-12.columns
 			.login
 				ul.button-group

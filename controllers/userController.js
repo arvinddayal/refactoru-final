@@ -28,13 +28,12 @@ module.exports = {
 				var groupSize = doc.groupSize;
 				var location = doc.location;
 				var qtyMod = function(){
-					if (location === "home"){
-						return (groupSize + (pets/2)*3);
+					if (location == "home"){
+						return ((groupSize + (pets/2))*3);
 					}
 					else
 						return groupSize + (pets/2);
 				};
-
 
 				UserModel.findOne(query, function(err,user){
 					ItemModel.find({}, function(err, items){
