@@ -11,11 +11,15 @@ var userSchema = new mongoose.Schema({
 	kits:[{
 		kitName:String,
 		timeCreated: Date,
+		location: String,
+		groupSize: Number,
+		pets: Number,
 		kitItems: [{
 			itemName: String,
 			description: String,
 			quantity: {type: Number, default: 1},
 			unitOfMeasure: String,
+			unitOfMeasurePlural: String,
 			category: [Number],
 			expiration: Number,
 			url: String,

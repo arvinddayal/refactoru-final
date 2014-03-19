@@ -33,7 +33,9 @@ module.exports = {
 		var d = (req.body.unitOfMeasure);
 		var e = newArr();
 		var f = (req.body.expiration);
-		var formattedItem = ({itemName:a,description:b,quantity:c,unitOfMeasure:d,category:e,expiration:f});
+		var g = (req.body.url);
+		var h = (req.body.unitOfMeasurePlural);
+		var formattedItem = ({itemName:a,description:b,quantity:c,unitOfMeasure:d,category:e,expiration:f, url:g,unitOfMeasurePlural:h});
 		var newItem = new ItemModel(formattedItem);
 		newItem.save();
 		res.render('items');

@@ -37,6 +37,9 @@ if(global.process.env.MONGOHQ_URL){
 }else{
   mongoose.connect('mongodb://localhost/final');
 }
+
+// url = global.process.env || 6789656859
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

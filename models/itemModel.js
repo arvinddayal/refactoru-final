@@ -4,6 +4,7 @@ var itemSchema = new mongoose.Schema({
 	description: String,
 	quantity: {type: Number, default: 1},
 	unitOfMeasure: String,
+	unitOfMeasurePlural: String,
 	category: [Number],
 	expiration: Number,
 	url: String

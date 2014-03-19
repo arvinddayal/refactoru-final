@@ -1,27 +1,36 @@
 extends layout
 
 block content
-	header Hello #{profile.firstName}
-	for q in questions
+	.row.title
+		.large-8.columns.header #{profile.firstName}'s Emergency Kits
+		.large-1.columns.rpad-q
+			a(href="/logout" class="button [radius round]") Logout
+	for k in kits
 		.kit-container
 			.kit-name#kit-name
-				h2 Kit: #{q.kitName}
-				a(data-profileid="#{profile._id}" data-kitid="#{q._id}").delete#delete Delete Kit
-			for x in q.kitItems
-				.row
+				.row.delete
+					.large-12.columns
+						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right#delete Delete Kit
+				.row.white
+					.large-12.columns
+						h2 Kit: #{k.kitName}
+				.row.white
+					.large-12.columns
+						h3 Location: #{k.location} | Group Size: #{k.groupSize} | Pets: #{k.pets}
+			for x in k.kitItems
+				.row.white
 					.large-1.columns 
 						img(src="#{x.url}")
-					.large-2.columns.text #{x.itemName}							
-					.large-1.columns.text Quantity: #{x.quantity} 
-					if (x.quantity) > 1
-						.large-2.columns #{x.unitOfMeasure}s
-					else if (x.unitOfMeasure) !== 0 && (x.quantity) === 1
-						.large-2.columns #{x.unitOfMeasure}				
-					else
-						.large-2.columns 
+					.large-2.columns.text #{x.itemName}
+					if (x.unitOfMeasure) < 1
+						.large-2.columns #{x.quantity}
+					else if (x.quantity) > 1
+						.large-2.columns #{x.quantity} #{x.unitOfMeasurePlural}
+					else if (x.quantity) === 1
+						.large-2.columns #{x.quantity} #{x.unitOfMeasure}
 					if (x.addedDate)==null
 						.large-2.columns.text 
-							img(src="/images/icons/check.png" data-profileid="#{profile._id}" data-kitid="#{q._id}" data-itemid="#{x._id}")#check
+							img.img-md(src="/images/icons/check.png" data-profileid="#{profile._id}" data-kitid="#{k._id}" data-itemid="#{x._id}")#check
 					else
 						.large-2.columns.text Added: #{x.addedDate}
 					if (x.expiration) === 0 || (x.expiration) === (x.addedDate) || (x.addedDate)==null
@@ -29,6 +38,4 @@ block content
 					else 
 						.large-2.columns.text#exp-date Expiration: #{x.expDate}
 					.large-2.columns
-						img(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")
-
-	a(href="/" class="button [radius round]") Home
+						img.img-md(src="/images/icons/question.png" data-tooltip class="has-tip" title="#{x.description}")

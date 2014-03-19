@@ -2,8 +2,10 @@ var passport = require('passport');
 var FacebookStrategy  = require('passport-facebook').Strategy;
 var GoogleStrategy  = require('passport-google-oauth').OAuth2Strategy;
 var UserModel = require('../models/userModel');
-var GOOGLE_CLIENT_ID = "317957063311-47ulg5coqcotqg7d0tdjncr543ji2oma.apps.googleusercontent.com";
-var GOOGLE_CLIENT_SECRET = "JwQ6qEdqkJUCAeYxgqvJM_Is";
+var googleClientID = "317957063311-47ulg5coqcotqg7d0tdjncr543ji2oma.apps.googleusercontent.com";
+var googleClientSecret = "JwQ6qEdqkJUCAeYxgqvJM_Is";
+var facebookClientID = '235586613295565';
+var facebookClientSecret = '5685b05fe219709f59102ffdff9ec180';
 
 passport.serializeUser(function(user, done){
 	done(null, user._id);
@@ -17,8 +19,8 @@ passport.deserializeUser(function(userid, done){
 
 //Facebook
 var facebookStrategy = new FacebookStrategy({
-	clientID: '235586613295565',
-	clientSecret: '5685b05fe219709f59102ffdff9ec180',
+	clientID: facebookClientID,
+	clientSecret: facebookClientSecret,
 	callbackURL: 'http://localhost:3000/facebook/callback'
 }, function(accessToken, refreshToken, profile, done){
 	// console.log(accessToken, refreshToken, profile);
@@ -43,8 +45,8 @@ var facebookStrategy = new FacebookStrategy({
 
 //Google
 var googleStrategy = new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
+    clientID: googleClientID,
+    clientSecret: googleClientSecret,
     callbackURL: "http://127.0.0.1:3000/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {

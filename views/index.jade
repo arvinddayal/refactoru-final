@@ -1,62 +1,61 @@
 extends layout
 
 block content
-	header Welcome to the Emergency Kit Builder Site
-	.container
-		.row
-			.large-10.columns
-				p This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
-				form.questionnaire#questionnaire(action="/submit" method="post")
-					input#name(type="text" name="kitName" autofocus="autofocus" placeholder="Kit Name (Defaults to today's date if left blank)")
-					input#timeCreated(type="hidden" name="timeCreated")
-					select#location(name="location")
-						option(value="location") Location of Kit
-						option(value="home") Home
-						option(value="vehicle") Vehicle
-					select#groupSize(name="groupSize")
-						option(value="groupSize") Group Size
-						option(value="1") 1
-						option(value="2") 2
-						option(value="3") 3
-						option(value="4") 4
-						option(value="5") 5
-						option(value="6") 6
-					select#pets(name="pets") Pets
-						option(value="pets") # of Pets
-						option(value="0") 0
-						option(value="1") 1
-						option(value="2") 2
-						option(value="3") 3
-						option(value="4") 4
-					p Special Considerations
-					.home
-						input.homeGroup(type="checkbox" name="earthquakeZone" value="earthquakeZone")
-						|  Earthquake Zone
-						br
-						input.homeGroup(type="checkbox" name="floodZone" value="true")
-						|  Flood Zone
-						br
-						input.homeGroup(type="checkbox" name="tornadoZone" value="true")
-						|  Tornado Zone
-						br
-						input.homeGroup(type="checkbox" name="hurricaneZone" value="true")
-						|  Hurricane Zone
-						br
-						input.homeGroup(type="checkbox" name="limitedStorage" value="true")
-						|  Limited Storage Space (i.e. You live in a small apartment)
-						br
-					.travel
-						input#travel(type="checkbox" name="backCountry" value="true")
-						|  Back Country Driving
-					br
-					input#submit-questionnaire(type="submit" name="submit" value="Submit")
-					.login
-						a(href="#" class="button [radius round]" data-reveal-id="myModal") Login and View My Kits	
-					.reveal-modal#myModal(data-reveal)
-						h2 Login With:
-						ul.button-group 
-							li 
-								a(href="/login/google" class="button [radius round]")#google-button Google
-							li 
-								a(href="/login/facebook" class="button [radius round]")#facebook-button Facebook					
-							a.close-reveal-modal &#215
+	.row.title
+		.large-10.columns.header Welcome to the Emergency Kit Builder Site
+		.large-1.columns.rpad
+			a(href="#" class="button medium" data-reveal-id="myModal") Login
+	.row.space-down.white
+		p.q-title This questionnaire is designed to assess your needs in the 72 hours following an emergency or during a road trip.
+		form.questionnaire#questionnaire(action="/submit" method="post")
+			input#name(type="text" name="kitName" autofocus="autofocus" placeholder="Kit Name (Defaults to today's date if left blank)")
+			input#timeCreated(type="hidden" name="timeCreated")
+			select#location(name="location")
+				option(value="location") Location of Kit
+				option(value="home") Home
+				option(value="vehicle") Vehicle
+			select#groupSize(name="groupSize")
+				option(value="groupSize") Group Size
+				option(value="1") 1
+				option(value="2") 2
+				option(value="3") 3
+				option(value="4") 4
+				option(value="5") 5
+				option(value="6") 6
+			select#pets(name="pets") Pets
+				option(value="pets") # of Pets
+				option(value="0") 0
+				option(value="1") 1
+				option(value="2") 2
+				option(value="3") 3
+				option(value="4") 4
+			p.special Special Considerations
+			.home
+				input.homeGroup(type="checkbox" name="earthquakeZone" value="earthquakeZone")
+				|  Earthquake Zone
+				br
+				input.homeGroup(type="checkbox" name="floodZone" value="true")
+				|  Flood Zone
+				br
+				input.homeGroup(type="checkbox" name="tornadoZone" value="true")
+				|  Tornado Zone
+				br
+				input.homeGroup(type="checkbox" name="hurricaneZone" value="true")
+				|  Hurricane Zone
+				br
+				//- input.homeGroup(type="checkbox" name="limitedStorage" value="true")
+				//- |  Limited Storage Space (i.e. You live in a small apartment)
+				//- br
+			.travel
+				input#travel(type="checkbox" name="backCountry" value="true")
+				|  Back Country Driving
+			br
+			input#submit-questionnaire(class="button small" type="submit" name="submit" value="Submit")
+			.reveal-modal#myModal(data-reveal)
+				h2 Login With:
+				ul.button-group 
+					li 
+						a(href="/login/google" class="button")#google-button Google
+					li 
+						a(href="/login/facebook" class="button")#facebook-button Facebook					
+					a.close-reveal-modal &#215

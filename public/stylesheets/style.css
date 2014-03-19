@@ -1,24 +1,75 @@
 body {
   font: 14px Lucida Grande Helvetica Arial sans-serif;
+  background-color: #deb887;
 }
 a {
   color: #00b7ff;
 }
-header {
-  text-align: center;
+.title {
+  display: inline;
+  border: none;
+  background-color: none;
+}
+.rpad {
+  margin-right: 20px;
+}
+.rpad-q {
+  margin-right: 40px;
+}
+.header {
+  text-align: right;
   font-weight: bold;
   font-size: 3em;
+  padding: 0;
 }
-.questionnaire {
+.q-title {
+  font-size: 1.5em;
+}
+.space-down {
+  margin-top: 10px;
+  width: 50%;
+}
+.right {
+  text-align: right;
+}
+.review-box {
+  margin-top: 10px;
+}
+.reveal-modal {
+  width: 30%;
   text-align: center;
+  left: 70%;
+  padding: 0;
+}
+.button-group {
+  margin-left: 15%;
+}
+.questionnaire,
+.review {
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 1.5em;
 }
 .error {
   border: 2pt solid #f00;
 }
-.kit-name {
+.kit-name > h2 {
   font-weight: bold;
   text-decoration: underline;
   text-align: center;
+}
+h2 {
+  font-size: 2em;
+}
+.special {
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 1.25em;
+}
+.special > input {
+  float: left;
 }
 .row {
   border: 1pt solid #000;
@@ -28,13 +79,20 @@ header {
 }
 .kit-container {
   font-size: 1.25em;
+  margin-bottom: 50px;
+  text-align: center;
 }
-.columns,
-.row {
+.white {
   background-color: #fff;
 }
 img {
   width: 4.5em;
+}
+.img-md {
+  width: 3.5em;
+}
+.delete {
+  border: none;
 }
 .tooltip {
   color: #f00;
