@@ -11,13 +11,13 @@ block content
 					a(href="/logout" class="strong") Logout
 	for k in kits
 		.kit-container
-			.kit-info
+			.kit-info#kit-info
 				.row.white
-					.large-11.columns#kit-info
+					.large-11.columns
 						h2 Kit: #{k.kitName}
 					.large-1.columns
 						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right-align#delete Delete Kit
-				.row.white#kit-info
+				.row.white
 					.large-12.columns
 						h3 Location: #{k.location} | Group Size: #{k.groupSize} | Pets: #{k.pets}
 			for x in k.kitItems
