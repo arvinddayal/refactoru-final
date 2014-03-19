@@ -41,8 +41,7 @@ a {
   width: 50%;
 }
 .right-align {
-  float: right;
-  color: #fffff0;
+  color: #f00;
 }
 .reveal-modal {
   width: 35%;
@@ -71,10 +70,13 @@ a {
 .error {
   border: 2pt solid #f00;
 }
-.kit-name > h2 {
+.kit-info > h2 {
   font-weight: bold;
   text-decoration: underline;
   text-align: center;
+}
+.hidden {
+  display: none;
 }
 h2 {
   font-size: 2em;

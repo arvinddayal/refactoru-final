@@ -11,18 +11,17 @@ block content
 					a(href="/logout" class="strong") Logout
 	for k in kits
 		.kit-container
-			.kit-name#kit-name
-				.row.delete
-					.large-12.columns
-						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right-align#delete Delete Kit
+			.kit-info#kit-info
 				.row.white
-					.large-12.columns
+					.large-11.columns
 						h2 Kit: #{k.kitName}
+					.large-1.columns
+						a(data-profileid="#{profile._id}" data-kitid="#{k._id}").right-align#delete Delete Kit
 				.row.white
 					.large-12.columns
 						h3 Location: #{k.location} | Group Size: #{k.groupSize} | Pets: #{k.pets}
 			for x in k.kitItems
-				.row.white
+				.row.white.hidden(data-kitid="#{k._id}")
 					.medium-1.columns 
 						img(src="#{x.url}")
 					.medium-2.columns 

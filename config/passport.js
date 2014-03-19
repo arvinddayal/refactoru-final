@@ -22,6 +22,7 @@ var facebookStrategy = new FacebookStrategy({
 	clientID: facebookClientID,
 	clientSecret: facebookClientSecret,
 	callbackURL: 'http://salty-stream-5400.herokuapp.com/facebook/callback'
+	// callbackURL: 'http://localhost:3000/facebook/callback'
 }, function(accessToken, refreshToken, profile, done){
 	// console.log(accessToken, refreshToken, profile);
 	
@@ -48,6 +49,7 @@ var googleStrategy = new GoogleStrategy({
     clientID: googleClientID,
     clientSecret: googleClientSecret,
     callbackURL: "http://salty-stream-5400.herokuapp.com/google/callback"
+    // callbackURL: "http://localhost:3000/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // console.log(accessToken, refreshToken, profile);

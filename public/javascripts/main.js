@@ -50,6 +50,11 @@ $(function(){
 		}
 	});
 
+//Clicking kit info show/hides kit
+	$(document).on('click', '#kit-info', function(){
+		$(this).nextAll().slideToggle(500);
+	});
+
 //Clicking Checkmark updates added date and expiration date
 	$(document).on('click', "#check", function(){
 		var profileID = $(this).data("profileid");
@@ -79,7 +84,5 @@ $(function(){
 			}
 		});
 	});
-
-
 
 });
