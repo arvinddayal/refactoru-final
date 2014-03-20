@@ -28,17 +28,15 @@ block content
 					li Backcountry Driving
 
 		.large-12.columns.text-center
-			ul.button-group
-				li
+			.row.clear
+				.large-12.columns
 					a(href="/").button I want to start over
-				li
 					a(href="#" data-reveal-id="myModal").button This looks good
 		.reveal-modal#myModal(data-reveal)
 			h2 Login With:
-			ul.button-group 
-				li 
+			.row.clear
+				.large-12.columns
 					a(href="/login/google" class="button")#google-button Google
-				li 
-					a(href="/login/facebook" class="button")#facebook-button Facebook					
-				a.close-reveal-modal &#215
+					a(href="/login/facebook" class="button")#facebook-button Facebook
+			a.close-reveal-modal &#215
 			

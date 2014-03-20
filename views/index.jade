@@ -61,9 +61,8 @@ block content
 			input#submit-questionnaire(class="button small" type="submit" name="submit" value="Submit")
 			.reveal-modal#myModal(data-reveal)
 				h2 Login With:
-				ul.button-group 
-					li 
-						a(href="/login/google" class="button")#google-button Google
-					li 
-						a(href="/login/facebook" class="button")#facebook-button Facebook					
-					a.close-reveal-modal &#215
+				.row.clear
+					.large-12.columns
+						a(href="/login/google" class="button").button#google-button Google
+						a(href="/login/facebook" class="button").button#facebook-button Facebook
+				a.close-reveal-modal &#215
